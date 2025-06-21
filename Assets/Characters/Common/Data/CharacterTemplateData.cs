@@ -1,30 +1,31 @@
 using UnityEngine;
 using System;
+using System.Collections.Generic;
 
 [Serializable]
 public class CharacterTemplateData
 {
-    [Serializable]
-    // 基础属性
-    public int baseHp;           // 基础生命值
-    public int baseAttack;       // 基础攻击力
-    public int baseDefense;      // 基础防御力
-    public int impactForce;      // 冲击力
-    public float critRate;       // 暴击率（百分比）
-    public float critDamage;     // 暴击伤害（百分比）
-    public int abnormalControl;  // 异常掌控
-    public int abnormalMastery;  // 异常精通
-    public float penetrationRate;// 穿透率（百分比）
-    public float energyRecovery; // 能量自动回复
+    // ================== 基本信息 ==================
+    public string Name;         // 姓名
+    public Rarity Rarity;       // 稀有度
+    public Element Element;     // 属性
+    public Class Class;         // 职业
+    public Faction Faction;     // 阵营
 
-    [Serializable]
-    // 等级属性节点
-    public struct LevelStat
-    {
-        public int hp;
-        public int attack;
-        public int defense;
-    }
+    // ================== 基础属性 ==================
+    public int HP;              // 生命值
+    public int ATK;             // 攻击力
+    public int DEF;             // 防御力
+    public int Impact;          // 冲击力
+    public float CritRate;      // 暴击率
+    public float CritDMG;       // 暴击伤害
+    public int DebuffRate;      // 异常掌控
+    public int DebuffHit;       // 异常精通
+    public float Penetration;   // 穿透率
+    public float EnergyRegen;   // 能量自动回复
 
-    public LevelStat[] levelStats = new LevelStat[6]; // 10,20,...,60级的属性节点
+    
+
+    // ================== 节点数据 ==================
+    public List<LevelStat> LevelStats = new List<LevelStat>(6); // 等级属性节点
 }
